@@ -59,11 +59,12 @@ namespace calculator_wht
 
     public partial class MainWindow : Window
     {
-        Calculator calculator;
+        WaveCalculator.Lib.WaveCalculator calculator;
+
         public MainWindow()
         {
             InitializeComponent();
-            calculator = new Calculator();
+            calculator = new WaveCalculator.Lib.WaveCalculator();
         }
 
         private void box_L_TextChanged(object sender, TextChangedEventArgs e)

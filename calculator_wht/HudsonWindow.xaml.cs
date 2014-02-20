@@ -29,12 +29,13 @@ namespace calculator_wht
 
     public partial class HudsonWindow : Window
     {
-        Calculator Hudsoncalculator;
+        WaveCalculator.Lib.HudsonCalculator Hudsoncalculator;
         public HudsonWindow()
         {
             InitializeComponent();
-            Hudsoncalculator = new Calculator();
+            Hudsoncalculator = new WaveCalculator.Lib.HudsonCalculator();
         }
+
 
         private void hbox_L_TextChanged(object sender, TextChangedEventArgs e)
         {
