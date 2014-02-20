@@ -25,6 +25,7 @@ namespace calculator_wht
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    
     public class Person : INotifyPropertyChanged
     {
         private string name;
@@ -76,9 +77,9 @@ namespace calculator_wht
         {
             var h = double.Parse(box_h.Text);
             var H = double.Parse(box_H.Text);
-            var L = double.Parse(box_L.Text);
+            var lambda = double.Parse(box_L.Text);
 
-            var result = calculator.Calculate(L, H, h);
+            var result = calculator.Calculate(lambda, H, h);
             
             Result.Content = result.state;
             ResultWaveT.Content = Math.Round(result.T, 2);
@@ -99,19 +100,15 @@ namespace calculator_wht
             Close();
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        public void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             HudsonWindow secondWindow = new HudsonWindow();
             secondWindow.Show();
 
         }
 
-
  
-        
     }
-
-   
 
 
 }

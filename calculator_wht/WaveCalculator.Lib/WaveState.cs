@@ -12,6 +12,8 @@ namespace WaveCalculator.Lib
         public double omega { get; set; }
         public double T { get; set; }
         public double f { get; set; }
+
+        public string state { get; set; }
     }    
     
     public class PhysConst : WaveProperties
@@ -31,9 +33,6 @@ namespace WaveCalculator.Lib
 
         public double E { get; set; }
         public double P {get; set;}
-
-        public string state { get; set; }
-
     }
 
     public class HudsonState : PhysConst
@@ -44,7 +43,9 @@ namespace WaveCalculator.Lib
         public double beta { get; set; }
         public double HudsonForce { get; set; }
 
+        public double Hd { get; set; }
         public double NS { get; set; }
+        public double SR { get; set; }
         public double Const { get; set; }
         public double gammaR { get; set; }
         public double WR { get; set; }

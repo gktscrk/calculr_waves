@@ -65,7 +65,7 @@
         <Label Content="rad/m" Grid.Column="3" HorizontalAlignment="Left" Margin="73,164,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
         <Label Content="waves" Grid.Column="3" HorizontalAlignment="Left" Margin="73,45,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40" RenderTransformOrigin="-0.043,0.533"/>
         <Label Content="Basic Wave Properties" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="130" Grid.Column="2" Margin="10,20,0,0" FontSize="11" FontWeight="Bold"/>
-        <Label Content="Derived Wave Quantities" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="138" Grid.Column="2" Margin="10,189,0,0" FontSize="11" FontWeight="Bold"/>
+        <Label Content="Derived Quantities for Breakwater Design" Grid.Row="1" VerticalAlignment="Top" Height="25" Grid.Column="2" Margin="10,189,0,0" FontSize="11" FontWeight="Bold" HorizontalAlignment="Left" Width="270" Grid.ColumnSpan="2"/>
         <Label Content="m" HorizontalAlignment="Left" Margin="85,76,0,0" VerticalAlignment="Top" Height="25" Width="25" FontSize="10" Grid.Row="1" Grid.Column="1"/>
         <Label Content="m" HorizontalAlignment="Left" Margin="85,105,0,0" VerticalAlignment="Top" Height="25" Width="25" FontSize="10" Grid.Row="1" Grid.Column="1"/>
         <Label Content="m" HorizontalAlignment="Left" Margin="85,135,0,0" VerticalAlignment="Top" Height="25" Width="25" FontSize="10" Grid.Row="1" Grid.Column="1"/>
@@ -75,5 +75,26 @@
         <Label Content="Damage coefficient" HorizontalAlignment="Left" Margin="0,198,0,0" VerticalAlignment="Top" Height="25" Width="105" FontSize="11" Grid.Row="1" Grid.ColumnSpan="2"/>
         <Label Content="deg" HorizontalAlignment="Left" Margin="80,168,0,0" VerticalAlignment="Top" Height="25" Width="30" FontSize="10" Grid.Row="1" Grid.Column="1"/>
         <Label Content="%" HorizontalAlignment="Left" Margin="85,198,0,0" VerticalAlignment="Top" Height="25" Width="25" FontSize="10" Grid.Row="1" Grid.Column="1"/>
+        <Label x:Name="ResultDispR" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="3,134,0,0" FontSize="11"/>
+        <Label x:Name="ResultWavek" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="3,164,0,0" FontSize="11"/>
+        <Label x:Name="ResultWaveT" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="3,75,0,0" FontSize="11"/>
+        <Label x:Name="ResultWavef" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="3,105,0,0" FontSize="11"/>
+        <Label x:Name="Result" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="73" Grid.Column="3" Margin="0,45,0,0" FontSize="11"/>
+        <Label Content="Ratio of densities" Grid.Column="2" HorizontalAlignment="Left" Margin="31,308,0,0" Grid.Row="1" VerticalAlignment="Top" Width="117" Height="25" FontSize="11"/>
+        <Label Content="Hudson Force:" Grid.Column="2" HorizontalAlignment="Left" Margin="31,278,0,0" Grid.Row="1" VerticalAlignment="Top" Width="117" Height="25" FontSize="11"/>
+        <Label Content="Particle velocity u:" Grid.Column="2" HorizontalAlignment="Left" Margin="31,219,0,0" Grid.Row="1" VerticalAlignment="Top" Width="117" Height="25" FontSize="11"/>
+        <Label Content="Design wave height H:" Grid.Column="2" HorizontalAlignment="Left" Margin="31,248,0,0" Grid.Row="1" VerticalAlignment="Top" Width="117" Height="25" FontSize="11"/>
+        <Label Content="m" Grid.Column="3" HorizontalAlignment="Left" Margin="73,248,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
+        <Label Content="N" Grid.Column="3" HorizontalAlignment="Left" Margin="73,277,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
+        <Label Content="m/s" Grid.Column="3" HorizontalAlignment="Left" Margin="73,219,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40" RenderTransformOrigin="-0.043,0.533"/>
+        <Label x:Name="ResultHudsonForce" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="0,277,0,0" FontSize="11"/>
+        <Label x:Name="ResultSR" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="0,307,0,0" FontSize="11"/>
+        <Label x:Name="Resultu" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="0,218,0,0" FontSize="11"/>
+        <Label x:Name="ResultHd" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="0,248,0,0" FontSize="11"/>
+        <Label Content="Weight of rock for design:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,367,0,0" Grid.Row="1" VerticalAlignment="Top" Width="138" Height="25" FontSize="11"/>
+        <Label Content="Stability coefficient Ns:" Grid.Column="2" HorizontalAlignment="Left" Margin="19,337,0,0" Grid.Row="1" VerticalAlignment="Top" Width="129" Height="25" FontSize="11"/>
+        <Label Content="kg" Grid.Column="3" HorizontalAlignment="Left" Margin="73,366,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
+        <Label x:Name="ResultWR" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="0,366,0,0" FontSize="11"/>
+        <Label x:Name="ResultNS" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="0,337,0,0" FontSize="11"/>
     </Grid>
 </Window>

@@ -26,10 +26,10 @@ namespace calculator_wht
     /// Interaction logic for MainWindow.xaml
     /// </summary>
  
-
     public partial class HudsonWindow : Window
     {
         WaveCalculator.Lib.HudsonCalculator Hudsoncalculator;
+
         public HudsonWindow()
         {
             InitializeComponent();
@@ -44,7 +44,7 @@ namespace calculator_wht
 
         private void Calculate_Click(object sender, RoutedEventArgs e)
         {
-            var L = double.Parse(hbox_L.Text);
+            var lambda = double.Parse(hbox_L.Text);
             var h = double.Parse(hbox_h.Text);
             var alpha = double.Parse(hbox_alpha.Text);
             var KD = double.Parse(hbox_KD.Text);
@@ -52,8 +52,20 @@ namespace calculator_wht
 
             alpha = (Math.PI / 180) * alpha;
 
-            var result = Hudsoncalculator.Calculate(L, l, h);
-            
+            var result = Hudsoncalculator.Calculate(lambda, l, h, KD, alpha);
+
+            Result.Content = result.state;
+            ResultWaveT.Content = Math.Round(result.T, 2);
+            ResultWavef.Content = Math.Round(result.f, 2);
+            ResultDispR.Content = Math.Round(result.omega, 3);
+            ResultWavek.Content = Math.Round(result.k, 3);
+
+            ResultHudsonForce.Content = Math.Round(result.HudsonForce, 2);
+            ResultHd.Content = Math.Round(result.Hd, 2);
+            ResultNS.Content = Math.Round(result.NS, 2);
+            ResultSR.Content = Math.Round(result.SR, 2);
+            ResultWR.Content = Math.Round(result.WR, 2);
+
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
