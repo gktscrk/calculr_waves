@@ -23,14 +23,14 @@ using WaveCalculator.Controls;
 namespace calculator_wht
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for HudsonPage.xaml
     /// </summary>
- 
-    public partial class HudsonWindow : Window
+
+    public partial class HudsonPage : Page
     {
         WaveCalculator.Lib.HudsonCalculator Hudsoncalculator;
 
-        public HudsonWindow()
+        public HudsonPage()
         {
             InitializeComponent();
             Hudsoncalculator = new WaveCalculator.Lib.HudsonCalculator();
@@ -68,14 +68,8 @@ namespace calculator_wht
 
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
 
     }
-
-   
 
 
 }

@@ -93,18 +93,13 @@ namespace calculator_wht
             Resultcg.Content = Math.Round(result.cg, 2);
             ResultE.Content = Math.Round(result.E, 2);
             ResultP.Content = Math.Round(result.P, 2);
+
+            ResultkP.Content = "= " + Math.Round(result.P/1000, 3);
         }
         
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
-        }
-
-        public void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            HudsonWindow secondWindow = new HudsonWindow();
-            secondWindow.Show();
-
         }
 
  

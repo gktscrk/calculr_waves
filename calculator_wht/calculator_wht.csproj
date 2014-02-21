@@ -94,11 +94,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="HudsonWindow.xaml.cs">
-      <DependentUpon>HudsonWindow.xaml</DependentUpon>
+    <Compile Include="HudsonPage.xaml.cs">
+      <DependentUpon>HudsonPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="TextBoxNum.cs" />
-    <Page Include="HudsonWindow.xaml">
+    <Page Include="HudsonPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
