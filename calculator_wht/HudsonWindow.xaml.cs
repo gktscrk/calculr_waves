@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Ribbon;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -23,14 +24,14 @@ using WaveCalculator.Controls;
 namespace calculator_wht
 {
     /// <summary>
-    /// Interaction logic for HudsonPage.xaml
+    /// Interaction logic for HudsonWindow.xaml
     /// </summary>
 
-    public partial class HudsonPage : Page
+    public partial class HudsonWindow : RibbonWindow
     {
         WaveCalculator.Lib.HudsonCalculator Hudsoncalculator;
 
-        public HudsonPage()
+        public HudsonWindow()
         {
             InitializeComponent();
             Hudsoncalculator = new WaveCalculator.Lib.HudsonCalculator();
