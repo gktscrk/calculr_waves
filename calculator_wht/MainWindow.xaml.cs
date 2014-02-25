@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Ribbon;
+using Microsoft.Windows.Controls.Ribbon;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -69,6 +69,11 @@ namespace calculator_wht
             calculator = new WaveCalculator.Lib.WaveCalculator();
         }
 
+        private void OnIgnore(object sender, ExecutedRoutedEventArgs e)
+        {
+            // do nothing
+        }
+        
         private void box_L_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -98,37 +103,41 @@ namespace calculator_wht
             ResultkP.Content = "= " + Math.Round(result.P/1000, 3);
         }
         
-
         private void Open_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             
         }
+
         private void SaveProject_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             
         }
+        
         private void Settings_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             
         }
+
         private void Help_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             
         }
+        
         private void About_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             
         }
+        
         private void UnloadAllFiles_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             
         }
+        
         private void Exit_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
  
     }
-
 
 }

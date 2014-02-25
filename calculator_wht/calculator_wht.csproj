@@ -102,7 +102,7 @@
     <Compile Include="HudsonWindow.xaml.cs">
       <DependentUpon>HudsonWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TextBoxNum.cs" />
+    <Compile Include="Controls\TextBoxNum.cs" />
     <Page Include="HudsonWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

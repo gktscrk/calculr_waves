@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "calculator_wht", "calculator_wht.csproj", "{C29C81DA-9D81-43E4-B208-2283273032D8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D8EFE514-67BD-4316-9851-7E6BFE33E760} = {D8EFE514-67BD-4316-9851-7E6BFE33E760}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaveCalculator.Lib", "WaveCalculator.Lib\WaveCalculator.Lib.csproj", "{D8EFE514-67BD-4316-9851-7E6BFE33E760}"
 EndProject

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Ribbon;
+using Microsoft.Windows.Controls.Ribbon;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -36,7 +36,6 @@ namespace calculator_wht
             InitializeComponent();
             Hudsoncalculator = new WaveCalculator.Lib.HudsonCalculator();
         }
-
 
         private void hbox_L_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -69,8 +68,6 @@ namespace calculator_wht
 
         }
 
-
     }
-
 
 }
