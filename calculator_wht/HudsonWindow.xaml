@@ -5,6 +5,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="calculator_wht.HudsonWindow"
         Title="Hudson Forces Calculator" Height="500" Width="600">
+
+
+    <r:RibbonWindow.Resources>
+        <ResourceDictionary>
+            <!--<ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary 
+                    Source="/RibbonControlsLibrary;component/Themes/Office2007Blue.xaml" />
+            </ResourceDictionary.MergedDictionaries>-->
+        </ResourceDictionary>
+    </r:RibbonWindow.Resources>
     
     <Grid Margin="0,0,0,2">
         <Grid.RowDefinitions>
@@ -19,8 +29,70 @@
             <ColumnDefinition Width="133*"/>
             <ColumnDefinition Width="82*"/>
         </Grid.ColumnDefinitions>
-        
-        <controls:TextBoxNum x:Name="hbox_L" Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="0,75,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" TextChanged="box_L_TextChanged" Grid.Row="1" ToolTip="Enter the wavelength in metres."/>
+
+
+        <DockPanel Grid.ColumnSpan="5" >
+            <r:Ribbon  DockPanel.Dock="Top" Title="Title" Height="143" >
+                <r:Ribbon.ApplicationMenu>
+                    <r:RibbonApplicationMenu Label="File" IsMainMenu="True">
+                        <r:RibbonApplicationMenuItem Header="Null Data" 
+                                                      Click="UnloadAllFiles_MenuItem_Click" Icon="Images/bt_delete.png"/>
+                        <r:RibbonSeparator />
+                        <r:RibbonApplicationMenuItem Header="Open" 
+                                                      Click="Open_MenuItem_Click"/>
+                        <r:RibbonSeparator />
+                        <r:RibbonApplicationMenuItem Header="Save Project"
+                                                      Click="SaveProject_MenuItem_Click" Icon="Images/save.png" />
+                        <r:RibbonSeparator />
+                        <r:RibbonApplicationMenuItem Header="Settings" 
+                                                      Click="Settings_MenuItem_Click"/>
+                        <r:RibbonApplicationMenuItem Header="Help" 
+                                                      Click="Help_MenuItem_Click"/>
+                        <r:RibbonSeparator />
+                        <r:RibbonApplicationMenuItem Header="About"
+                                                      Click="About_MenuItem_Click"/>
+                        <r:RibbonSeparator />
+                        <r:RibbonApplicationMenuItem Header="Exit"  
+                                                      Click="Exit_MenuItem_Click"/>
+                        <r:RibbonApplicationMenu.AuxiliaryPaneContent>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Content="Recent Projects" Foreground="DarkBlue" />
+                                <StackPanel Grid.Row="1" Name="recentProjects_StackPanel" Orientation="Vertical"/>
+                            </Grid>
+                        </r:RibbonApplicationMenu.AuxiliaryPaneContent>
+                    </r:RibbonApplicationMenu>
+                </r:Ribbon.ApplicationMenu>
+
+                <r:RibbonTab Header="Home" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="592" Margin="0,0,-2,0" >
+                    <r:RibbonGroup Header="Clipboard">
+                        <r:RibbonButton Label="Paste" Command="Paste" Margin="0,6,0,-6" >
+                        </r:RibbonButton>
+                        <r:RibbonButton Label="Cut" Command="Cut" Margin="0,11,0,-11" >
+                        </r:RibbonButton>
+                        <r:RibbonButton Label="Copy" Command="Copy" Margin="0,24,0,-24" >
+                        </r:RibbonButton>
+                    </r:RibbonGroup>
+                </r:RibbonTab>
+                <r:RibbonTab Header="Calculator" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60"  Width="592" Margin="0,0,-2,0">
+                    <r:RibbonGroup Header="Basic Wave Properties" Height="60" Margin="0">
+                        <r:RibbonButton Label="Wavecalculator" Click="RibbonButton_Click_1" />
+                        <r:RibbonButton Label="Wave Characterisation" />
+                    </r:RibbonGroup>
+                    <r:RibbonGroup Height="60" Header="Breakwater Calculations">
+                        <r:RibbonButton Label="Hudson Equation" Click="RibbonButton_Click" />
+                        <r:RibbonButton />
+                    </r:RibbonGroup>
+                </r:RibbonTab>
+                <r:RibbonTab Header="Variables" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60"  Width="592" Margin="0,0,-2,0"/>
+
+            </r:Ribbon>
+        </DockPanel>
+
+        <controls:TextBoxNum x:Name="hbox_L" Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="0,75,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" TextChanged="hbox_L_TextChanged" Grid.Row="1" ToolTip="Enter the wavelength in metres."/>
         <controls:TextBoxNum x:Name="hbox_h" Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="0,105,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Grid.Row="1" ToolTip="Enter the water depth in metres."/>
         <controls:TextBoxNum x:Name="hbox_l" Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="0,135,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Grid.Row="1" ToolTip="Enter the average rock dimension to be used."/>
         <controls:TextBoxNum x:Name="hbox_alpha" Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="0,168,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Grid.Row="1" ToolTip="Enter the desired barrier slope."/>

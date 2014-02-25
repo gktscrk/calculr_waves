@@ -4,13 +4,21 @@
         xmlns:r="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="calculator_wht.MainWindow"
-        Title="Basic Engineering Calculator for Wave Forces" Height="540" Width="600">
+        Title="Engineering Calculator for Basic Wave Forces" Height="540" Width="600">
 
+    <r:RibbonWindow.Resources>
+        <ResourceDictionary>
+            <!--<ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary 
+                    Source="/RibbonControlsLibrary;component/Themes/Office2007Blue.xaml" />
+            </ResourceDictionary.MergedDictionaries>-->
+        </ResourceDictionary>
+    </r:RibbonWindow.Resources>
 
 
     <Grid Margin="0,0,0,-8">
         <Grid.RowDefinitions>
-            <RowDefinition Height="98"/>
+            <RowDefinition Height="109"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -20,6 +28,68 @@
             <ColumnDefinition Width="110*"/>
             <ColumnDefinition Width="102*"/>
         </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.ColumnSpan="5" >
+            <r:Ribbon  DockPanel.Dock="Top" Title="Title" Height="143" >
+                <r:Ribbon.ApplicationMenu>
+                    <r:RibbonApplicationMenu Label="File" IsMainMenu="True">
+                        <r:RibbonApplicationMenuItem Header="Null Data" 
+                                                      Click="UnloadAllFiles_MenuItem_Click" Icon="Images/bt_delete.png"/>
+                        <r:RibbonSeparator />
+                        <r:RibbonApplicationMenuItem Header="Open" 
+                                                      Click="Open_MenuItem_Click"/>
+                        <r:RibbonSeparator />
+                        <r:RibbonApplicationMenuItem Header="Save Project"
+                                                      Click="SaveProject_MenuItem_Click" Icon="Images/save.png" />
+                        <r:RibbonSeparator />
+                        <r:RibbonApplicationMenuItem Header="Settings" 
+                                                      Click="Settings_MenuItem_Click"/>
+                        <r:RibbonApplicationMenuItem Header="Help" 
+                                                      Click="Help_MenuItem_Click"/>
+                        <r:RibbonSeparator />
+                        <r:RibbonApplicationMenuItem Header="About"
+                                                      Click="About_MenuItem_Click"/>
+                        <r:RibbonSeparator />
+                        <r:RibbonApplicationMenuItem Header="Exit"  
+                                                      Click="Exit_MenuItem_Click"/>
+                        <r:RibbonApplicationMenu.AuxiliaryPaneContent>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Content="Recent Projects" Foreground="DarkBlue" />
+                                <StackPanel Grid.Row="1" Name="recentProjects_StackPanel" Orientation="Vertical"/>
+                            </Grid>
+                        </r:RibbonApplicationMenu.AuxiliaryPaneContent>
+                    </r:RibbonApplicationMenu>
+                </r:Ribbon.ApplicationMenu>
+
+                <r:RibbonTab Header="Home" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="592" Margin="0,0,-2,0" >
+                    <r:RibbonGroup Header="Clipboard" Width="120" >
+                        <r:RibbonButton Label="Paste" Command="Paste" VerticalAlignment="Stretch" HorizontalAlignment="Left" />
+                        <r:RibbonButton Label="Cut" Command="Cut" Height="15" HorizontalAlignment="Right" Width="35" VerticalAlignment="Top" />
+                        <r:RibbonButton Label="Copy" Command="Copy" Height="15" HorizontalAlignment="Right" Width="35" VerticalAlignment="Bottom" />
+                    </r:RibbonGroup>
+                </r:RibbonTab>
+                <r:RibbonTab Header="Calculator" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60"  Width="592" Margin="0,0,-2,0">
+                    <r:RibbonGroup Header="Basic Wave Properties" Height="60" Margin="0">
+                        <r:RibbonButton Label="Wavecalculator" Click="RibbonButton_Click_1" />
+                        <r:RibbonButton Label="Wave Characterisation" />
+                    </r:RibbonGroup>
+                    <r:RibbonGroup Height="60" Header="Breakwater Calculations">
+                        <r:RibbonButton Label="Hudson Equation" Click="RibbonButton_Click" />
+                        <r:RibbonButton />
+                    </r:RibbonGroup>
+                </r:RibbonTab>
+                <r:RibbonTab Header="Variables" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60"  Width="592" Margin="0,0,-2,0" >
+                    <r:RibbonGroup Header="Earth Constants" >
+                        <r:RibbonButton />
+                    </r:RibbonGroup>
+                </r:RibbonTab>
+            </r:Ribbon>
+        </DockPanel>
+
         <Controls:TextBoxNum x:Name="box_L" Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="0,75,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" TextChanged="box_L_TextChanged" Grid.Row="1" ToolTip="Enter the wavelength in metres."/>
         <Controls:TextBoxNum x:Name="box_H" Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="0,105,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Grid.Row="1" ToolTip="Enter the waveheight in metres."/>
         <Controls:TextBoxNum x:Name="box_h" Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="0,135,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Grid.Row="1" ToolTip="Enter the depth from the normal sea surface z=0 to depth z=-h."/>
@@ -39,11 +109,11 @@
         <Label Content="Wave period T: " Grid.Column="2" HorizontalAlignment="Left" Margin="31,75,0,0" Grid.Row="1" VerticalAlignment="Top" Width="117" Height="25" FontSize="11"/>
         <Label Content="Wave frequency f: " Grid.Column="2" HorizontalAlignment="Left" Margin="31,104,0,0" Grid.Row="1" VerticalAlignment="Top" Width="117" Height="25" FontSize="11"/>
         <Label x:Name="Result" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="73" Grid.Column="3" Margin="0,45,0,0" FontSize="11"/>
-        <Label Content="s" Grid.Column="3" HorizontalAlignment="Left" Margin="73,75,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
-        <Label Content="Hz" Grid.Column="3" HorizontalAlignment="Left" Margin="73,105,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
-        <Label Content="rad/s" Grid.Column="3" HorizontalAlignment="Left" Margin="73,134,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
-        <Label Content="rad/m" Grid.Column="3" HorizontalAlignment="Left" Margin="73,164,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
-        <Label Content="waves" Grid.Column="3" HorizontalAlignment="Left" Margin="73,45,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40" RenderTransformOrigin="-0.043,0.533"/>
+        <Label Content="s" Grid.Column="3" HorizontalAlignment="Left" Margin="73,75,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40" Grid.ColumnSpan="2"/>
+        <Label Content="Hz" Grid.Column="3" HorizontalAlignment="Left" Margin="73,105,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40" Grid.ColumnSpan="2"/>
+        <Label Content="rad/s" Grid.Column="3" HorizontalAlignment="Left" Margin="73,134,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40" Grid.ColumnSpan="2"/>
+        <Label Content="rad/m" Grid.Column="3" HorizontalAlignment="Left" Margin="73,164,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40" Grid.ColumnSpan="2"/>
+        <Label Content="waves" Grid.Column="3" HorizontalAlignment="Left" Margin="73,45,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40" RenderTransformOrigin="-0.043,0.533" Grid.ColumnSpan="2"/>
         <Label Content="Basic Wave Properties" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="130" Grid.Column="2" Margin="10,20,0,0" FontSize="11" FontWeight="Bold"/>
         <Label Content="Derived Wave Quantities" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="138" Grid.Column="2" Margin="10,189,0,0" FontSize="11" FontWeight="Bold"/>
         <Label Content="Group velocity cg: " Grid.Column="2" HorizontalAlignment="Left" Margin="31,308,0,0" Grid.Row="1" VerticalAlignment="Top" Width="117" Height="25" FontSize="11"/>
@@ -52,12 +122,12 @@
         <Label Content="Significant wave height Hs:" Grid.Column="2" HorizontalAlignment="Left" Margin="0,248,0,0" Grid.Row="1" VerticalAlignment="Top" Width="148" Height="25" FontSize="11"/>
         <Label Content="Power P:" Grid.Column="2" HorizontalAlignment="Left" Margin="31,368,0,0" Grid.Row="1" VerticalAlignment="Top" Width="117" Height="25" FontSize="11"/>
         <Label Content="Energy E:" Grid.Column="2" HorizontalAlignment="Left" Margin="31,338,0,0" Grid.Row="1" VerticalAlignment="Top" Width="117" Height="25" FontSize="11"/>
-        <Label Content="m" Grid.Column="3" HorizontalAlignment="Left" Margin="73,248,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
-        <Label Content="m/s" Grid.Column="3" HorizontalAlignment="Left" Margin="73,277,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
-        <Label Content="m/s" Grid.Column="3" HorizontalAlignment="Left" Margin="73,307,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
-        <Label Content="J" Grid.Column="3" HorizontalAlignment="Left" Margin="73,338,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
-        <Label Content="m/s" Grid.Column="3" HorizontalAlignment="Left" Margin="73,219,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40" RenderTransformOrigin="-0.043,0.533"/>
-        <Label Content="W" Grid.Column="3" HorizontalAlignment="Left" Margin="73,368,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
+        <Label Content="m" Grid.Column="3" HorizontalAlignment="Left" Margin="73,248,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40" Grid.ColumnSpan="2"/>
+        <Label Content="m/s" Grid.Column="3" HorizontalAlignment="Left" Margin="73,277,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40" Grid.ColumnSpan="2"/>
+        <Label Content="m/s" Grid.Column="3" HorizontalAlignment="Left" Margin="73,307,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40" Grid.ColumnSpan="2"/>
+        <Label Content="J" Grid.Column="3" HorizontalAlignment="Left" Margin="73,338,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40" Grid.ColumnSpan="2"/>
+        <Label Content="m/s" Grid.Column="3" HorizontalAlignment="Left" Margin="73,219,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40" RenderTransformOrigin="-0.043,0.533" Grid.ColumnSpan="2"/>
+        <Label Content="W" Grid.Column="3" HorizontalAlignment="Left" Margin="73,368,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40" Grid.ColumnSpan="2"/>
         <Label x:Name="Resultc" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="0,277,0,0" FontSize="11"/>
         <Label x:Name="Resultcg" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="0,307,0,0" FontSize="11"/>
         <Label x:Name="Resultu" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="0,218,0,0" FontSize="11"/>
@@ -70,66 +140,7 @@
 
         <Label Content="kW" Grid.Column="4" HorizontalAlignment="Left" Margin="62,368,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
         <Label x:Name="ResultkP" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="56" FontFamily="Tahoma" Grid.Column="4" Margin="2,368,0,0" FontSize="11"/>
-        
-        <DockPanel Grid.ColumnSpan="5">
-        <r:Ribbon  DockPanel.Dock="Top" Title="Title" >
-            <r:Ribbon.ApplicationMenu>
-                <r:RibbonApplicationMenu Label="File" IsMainMenu="True">
-                    <r:RibbonApplicationMenuItem Header="Null Data" 
-                                                      Click="UnloadAllFiles_MenuItem_Click" />
-                    <r:RibbonSeparator />
-                    <r:RibbonApplicationMenuItem Header="Open" 
-                                                      Click="Open_MenuItem_Click"/> 
-                    <r:RibbonSeparator />
-                    <r:RibbonApplicationMenuItem Header="Save Project"
-                                                      Click="SaveProject_MenuItem_Click"/>
-                    <r:RibbonSeparator />
-                    <r:RibbonApplicationMenuItem Header="Settings" 
-                                                      Click="Settings_MenuItem_Click"/>
-                    <r:RibbonApplicationMenuItem Header="Help" 
-                                                      Click="Help_MenuItem_Click"/>
-                    <r:RibbonSeparator />
-                    <r:RibbonApplicationMenuItem Header="About"
-                                                      Click="About_MenuItem_Click"/>
-                    <r:RibbonSeparator />
-                    <r:RibbonApplicationMenuItem Header="Exit"  
-                                                      Click="Exit_MenuItem_Click"/>
-                    <r:RibbonApplicationMenu.AuxiliaryPaneContent>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="30"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Label Grid.Row="0" Content="Recent Projects" Foreground="DarkBlue" />
-                            <StackPanel Grid.Row="1" Name="recentProjects_StackPanel" Orientation="Vertical"/>
-                        </Grid>
-                    </r:RibbonApplicationMenu.AuxiliaryPaneContent>
-                </r:RibbonApplicationMenu>
-            </r:Ribbon.ApplicationMenu>
-            <r:RibbonTab Header="Home" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="590" >
-                <r:RibbonGroup Name="Clipboard">
-                        <r:RibbonButton>
-                        </r:RibbonButton>
-                        <r:RibbonButton>
-                        </r:RibbonButton>
-                        <r:RibbonButton>
-                        </r:RibbonButton>
-                    </r:RibbonGroup>
-            </r:RibbonTab>
-            <r:RibbonTab Header="Calculator" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60"  Width="590">
-                <r:RibbonGroup Name="WaveProperty" Height="60" Margin="0">
-                    <r:RibbonButton Name="_Home" >
-                    
-                    </r:RibbonButton>
-                </r:RibbonGroup>
-                <r:RibbonGroup Name="Breakwaters" Height="60">
 
-                </r:RibbonGroup>
-            </r:RibbonTab>
-            <r:RibbonTab Header="Variables" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60"  Width="590"/>
-
-        </r:Ribbon>
-        </DockPanel>
 
     </Grid>
 </r:RibbonWindow>

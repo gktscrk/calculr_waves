@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using Microsoft.Windows.Controls.Ribbon;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -15,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
+using Microsoft.Windows.Controls.Ribbon;
 
 using WaveCalculator.Lib;
 using WaveCalculator.Controls;
@@ -136,6 +137,19 @@ namespace calculator_wht
         private void Exit_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void RibbonButton_Click(object sender, RoutedEventArgs e)
+        {
+            HudsonWindow secondWindow = new HudsonWindow();
+            secondWindow.Show();
+        }
+
+        private void RibbonButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            MainWindow secondWindow = new MainWindow();
+            secondWindow.Show();
+            
         }
  
     }
