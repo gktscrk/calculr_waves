@@ -98,13 +98,35 @@ namespace calculator_wht
             ResultkP.Content = "= " + Math.Round(result.P/1000, 3);
         }
         
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
+
+        private void Open_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void SaveProject_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void Settings_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void Help_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void About_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void UnloadAllFiles_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void Exit_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
-
-
-
  
     }
 

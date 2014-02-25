@@ -6,6 +6,9 @@
         xmlns:Custom="http://schemas.microsoft.com/winfx/2006/xaml/presentation/ribbon" 
         x:Class="calculator_wht.MainWindow"
         Title="Basic Engineering Calculator for Wave Forces" Height="531.333" Width="600">
+
+    
+
     <Grid Margin="0,0,0,-8">
         <Grid.RowDefinitions>
             <RowDefinition Height="98"/>
@@ -65,44 +68,62 @@
         <Label Content="m" HorizontalAlignment="Left" Margin="85,76,0,0" VerticalAlignment="Top" Height="25" Width="25" FontSize="10" Grid.Row="1" Grid.Column="1"/>
         <Label Content="m" HorizontalAlignment="Left" Margin="85,105,0,0" VerticalAlignment="Top" Height="25" Width="25" FontSize="10" Grid.Row="1" Grid.Column="1"/>
         <Label Content="m" HorizontalAlignment="Left" Margin="85,135,0,0" VerticalAlignment="Top" Height="25" Width="25" FontSize="10" Grid.Row="1" Grid.Column="1"/>
-        <Menu HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="100" Grid.Column="4" Margin="2,0,0,0" Grid.Row="1">
-            <MenuItem Header="_Options" Width="100" Height="20">
-                <MenuItem Header="_File">
-                    <MenuItem Header="_Save As..." />
 
-                </MenuItem>
-                <MenuItem Header="_Edit">
-                    <MenuItem Header="_Cut" Command="Cut">
-                        <MenuItem.Icon>
-                            <Image Source="Images/cut.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <Separator/>
-                    <MenuItem Header="_Copy" Command="Copy">
-                        <MenuItem.Icon>
-                            <Image Source="Images/copy.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="_Paste" Command="Paste">
-                        <MenuItem.Icon>
-                            <Image Source="Images/paste.png" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </MenuItem>
-                <Separator/>
-                <MenuItem Header="_Exit" Click="CloseButton_Click"/>
-            </MenuItem>
-        </Menu>
         <Label Content="kW" Grid.Column="4" HorizontalAlignment="Left" Margin="62,368,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
         <Label x:Name="ResultkP" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="56" FontFamily="Tahoma" Grid.Column="4" Margin="2,368,0,0" FontSize="11"/>
         
-        <Custom:Ribbon VerticalAlignment="Top" Grid.ColumnSpan="5" Height="98">
+        <r:Ribbon VerticalAlignment="Top" Grid.ColumnSpan="5" Height="110" Grid.RowSpan="2">
+            <r:Ribbon.ApplicationMenu>
+                <r:RibbonApplicationMenu Label="File" IsMainMenu="True">
+                    <r:RibbonApplicationMenuItem Header="Open" 
+                                                      Click="Open_MenuItem_Click"/> 
+                    <r:RibbonSeparator />
+                    <r:RibbonApplicationMenuItem Header="Save Project"
+                                                      Click="SaveProject_MenuItem_Click"/>
+                    <r:RibbonSeparator />
+                    <r:RibbonApplicationMenuItem Header="Settings" 
+                                                      Click="Settings_MenuItem_Click"/>
+                    <r:RibbonApplicationMenuItem Header="Help" 
+                                                      Click="Help_MenuItem_Click"/>
+                    <r:RibbonSeparator />
+                    <r:RibbonApplicationMenuItem Header="About"
+                                                      Click="About_MenuItem_Click"/>
+                    <r:RibbonSeparator />
+                    <r:RibbonApplicationMenuItem Header="Null Data" 
+                                                      Click="UnloadAllFiles_MenuItem_Click" />
+                    <r:RibbonSeparator />
+                    <r:RibbonApplicationMenuItem Header="Exit"  
+                                                      Click="Exit_MenuItem_Click"/>
+                    <r:RibbonApplicationMenu.AuxiliaryPaneContent>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Content="Recent Projects" Foreground="DarkBlue" />
+                            <StackPanel Grid.Row="1" Name="recentProjects_StackPanel" Orientation="Vertical"/>
+                        </Grid>
+                    </r:RibbonApplicationMenu.AuxiliaryPaneContent>
+                </r:RibbonApplicationMenu>
+            </r:Ribbon.ApplicationMenu>
+            <r:RibbonTab Header="Home" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="590" >
+                <r:RibbonGroup Name="Clipboard">
 
-            <Custom:RibbonTab Header="Home" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="590"/>
-            <Custom:RibbonTab Header="Calculator" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="590"/>
-            <Custom:RibbonTab Header="Variables" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="590"/>
+                </r:RibbonGroup>
+            </r:RibbonTab>
+            <r:RibbonTab Header="Calculator" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60"  Width="590">
+                <r:RibbonGroup Name="WaveProperty" Height="60" Margin="0">
+                    <r:RibbonButton Name="_Home" >
+                    
+                    </r:RibbonButton>
+                </r:RibbonGroup>
+                <r:RibbonGroup Name="Breakwaters" Height="60">
 
-        </Custom:Ribbon>
+                </r:RibbonGroup>
+            </r:RibbonTab>
+            <r:RibbonTab Header="Variables" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60"  Width="590"/>
+
+        </r:Ribbon>
 
 
     </Grid>
