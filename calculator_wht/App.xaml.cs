@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-using WaveCalculator.Lib;
+using WaveCalculator.Variables;
 using WaveCalculator.Controls;
 
 namespace calculator_wht
@@ -16,5 +16,6 @@ namespace calculator_wht
     /// </summary>
     public partial class App : Application
     {
+
     }
 }

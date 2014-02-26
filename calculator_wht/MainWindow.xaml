@@ -4,7 +4,7 @@
         xmlns:r="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="calculator_wht.MainWindow"
-        Title="Engineering Calculator for Basic Wave Forces" Height="540" Width="600">
+        Title="Engineering Calculator for Basic Wave Forces: Wave Properties!" Height="540" Width="600">
 
     <r:RibbonWindow.Resources>
         <ResourceDictionary>
@@ -14,7 +14,6 @@
             </ResourceDictionary.MergedDictionaries>-->
         </ResourceDictionary>
     </r:RibbonWindow.Resources>
-
 
     <Grid Margin="0,0,0,-8">
         <Grid.RowDefinitions>
@@ -67,23 +66,23 @@
 
                 <r:RibbonTab Header="Home" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="592" Margin="0,0,-2,0" >
                     <r:RibbonGroup Header="Clipboard" Width="120" >
-                        <r:RibbonButton Label="Paste" Command="Paste" VerticalAlignment="Stretch" HorizontalAlignment="Left" />
-                        <r:RibbonButton Label="Cut" Command="Cut" Height="15" HorizontalAlignment="Right" Width="35" VerticalAlignment="Top" />
-                        <r:RibbonButton Label="Copy" Command="Copy" Height="15" HorizontalAlignment="Right" Width="35" VerticalAlignment="Bottom" />
+                        <r:RibbonButton Label="Paste" Command="Paste" Height="30" HorizontalAlignment="Left" Width="35" />
+                        <r:RibbonButton Label="Cut" Command="Cut" Height="30" HorizontalAlignment="Center" Width="35" />
+                        <r:RibbonButton Label="Copy" Command="Copy" Height="30" HorizontalAlignment="Right" Width="35"  />
                     </r:RibbonGroup>
                 </r:RibbonTab>
                 <r:RibbonTab Header="Calculator" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60"  Width="592" Margin="0,0,-2,0">
                     <r:RibbonGroup Header="Basic Wave Properties" Height="60" Margin="0">
-                        <r:RibbonButton Label="Wavecalculator" Click="RibbonButton_Click_1" />
-                        <r:RibbonButton Label="Wave Characterisation" />
+                        <r:RibbonButton Label="Wave Properties" Click="RibbonButton_Click_1" />
+                        <r:RibbonButton Label="Wave Characterisation" Click="RibbonButton_Click_2" />
                     </r:RibbonGroup>
                     <r:RibbonGroup Height="60" Header="Breakwater Calculations">
                         <r:RibbonButton Label="Hudson Equation" Click="RibbonButton_Click" />
-                        <r:RibbonButton />
+                        <r:RibbonButton Label="Iribarren Equation" />
                     </r:RibbonGroup>
                 </r:RibbonTab>
                 <r:RibbonTab Header="Variables" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60"  Width="592" Margin="0,0,-2,0" >
-                    <r:RibbonGroup Header="Earth Constants" >
+                    <r:RibbonGroup Header="Physical Constants" >
                         <r:RibbonButton />
                     </r:RibbonGroup>
                 </r:RibbonTab>
@@ -138,8 +137,8 @@
         <Label Content="m" HorizontalAlignment="Left" Margin="85,105,0,0" VerticalAlignment="Top" Height="25" Width="25" FontSize="10" Grid.Row="1" Grid.Column="1"/>
         <Label Content="m" HorizontalAlignment="Left" Margin="85,135,0,0" VerticalAlignment="Top" Height="25" Width="25" FontSize="10" Grid.Row="1" Grid.Column="1"/>
 
-        <Label Content="kW" Grid.Column="4" HorizontalAlignment="Left" Margin="62,368,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
-        <Label x:Name="ResultkP" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="56" FontFamily="Tahoma" Grid.Column="4" Margin="2,368,0,0" FontSize="11"/>
+        <Label Content="kW" Grid.Column="4" HorizontalAlignment="Left" Margin="57,368,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
+        <Label x:Name="ResultkP" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="55" FontFamily="Tahoma" Grid.Column="4" Margin="2,368,0,0" FontSize="11"/>
 
 
     </Grid>

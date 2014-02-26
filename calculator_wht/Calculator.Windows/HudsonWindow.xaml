@@ -1,11 +1,10 @@
 ﻿<r:RibbonWindow 
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:controls="clr-namespace:WaveCalculator.Controls"
+        xmlns:Controls="clr-namespace:WaveCalculator.Controls"
         xmlns:r="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="calculator_wht.HudsonWindow"
-        Title="Hudson Forces Calculator" Height="500" Width="600">
-
+        Title="Engineering Calculator for Basic Wave Forces: Hudson Forces" Height="540" Width="600">
 
     <r:RibbonWindow.Resources>
         <ResourceDictionary>
@@ -15,19 +14,18 @@
             </ResourceDictionary.MergedDictionaries>-->
         </ResourceDictionary>
     </r:RibbonWindow.Resources>
-    
-    <Grid Margin="0,0,0,2">
+
+    <Grid Margin="0,0,0,-8">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="397*"/>
-            <RowDefinition Height="31*"/>
+            <RowDefinition Height="109"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="120"/>
-            <ColumnDefinition Width="157*"/>
-            <ColumnDefinition Width="133*"/>
-            <ColumnDefinition Width="82*"/>
+            <ColumnDefinition Width="160*"/>
+            <ColumnDefinition Width="110*"/>
+            <ColumnDefinition Width="102*"/>
         </Grid.ColumnDefinitions>
 
 
@@ -68,40 +66,40 @@
                 </r:Ribbon.ApplicationMenu>
 
                 <r:RibbonTab Header="Home" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="592" Margin="0,0,-2,0" >
-                    <r:RibbonGroup Header="Clipboard">
-                        <r:RibbonButton Label="Paste" Command="Paste" Margin="0,6,0,-6" >
-                        </r:RibbonButton>
-                        <r:RibbonButton Label="Cut" Command="Cut" Margin="0,11,0,-11" >
-                        </r:RibbonButton>
-                        <r:RibbonButton Label="Copy" Command="Copy" Margin="0,24,0,-24" >
-                        </r:RibbonButton>
+                    <r:RibbonGroup Header="Clipboard" Width="120" >
+                        <r:RibbonButton Label="Paste" Command="Paste" Height="30" HorizontalAlignment="Left" Width="35" />
+                        <r:RibbonButton Label="Cut" Command="Cut" Height="30" HorizontalAlignment="Center" Width="35" />
+                        <r:RibbonButton Label="Copy" Command="Copy" Height="30" HorizontalAlignment="Right" Width="35"  />
                     </r:RibbonGroup>
                 </r:RibbonTab>
                 <r:RibbonTab Header="Calculator" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60"  Width="592" Margin="0,0,-2,0">
                     <r:RibbonGroup Header="Basic Wave Properties" Height="60" Margin="0">
-                        <r:RibbonButton Label="Wavecalculator" Click="RibbonButton_Click_1" />
-                        <r:RibbonButton Label="Wave Characterisation" />
+                        <r:RibbonButton Label="Wave Properties" Click="RibbonButton_Click_1" />
+                        <r:RibbonButton Label="Wave Characterisation" Click="RibbonButton_Click_2" />
                     </r:RibbonGroup>
                     <r:RibbonGroup Height="60" Header="Breakwater Calculations">
                         <r:RibbonButton Label="Hudson Equation" Click="RibbonButton_Click" />
+                        <r:RibbonButton Label="Iribarren Equation" />
+                    </r:RibbonGroup>
+                </r:RibbonTab>
+                <r:RibbonTab Header="Variables" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60"  Width="592" Margin="0,0,-2,0" >
+                    <r:RibbonGroup Header="Physical Constants" >
                         <r:RibbonButton />
                     </r:RibbonGroup>
                 </r:RibbonTab>
-                <r:RibbonTab Header="Variables" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60"  Width="592" Margin="0,0,-2,0"/>
-
             </r:Ribbon>
         </DockPanel>
 
-        <controls:TextBoxNum x:Name="hbox_L" Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="0,75,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" TextChanged="hbox_L_TextChanged" Grid.Row="1" ToolTip="Enter the wavelength in metres."/>
-        <controls:TextBoxNum x:Name="hbox_h" Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="0,105,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Grid.Row="1" ToolTip="Enter the water depth in metres."/>
-        <controls:TextBoxNum x:Name="hbox_l" Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="0,135,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Grid.Row="1" ToolTip="Enter the average rock dimension to be used."/>
-        <controls:TextBoxNum x:Name="hbox_alpha" Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="0,168,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Grid.Row="1" ToolTip="Enter the desired barrier slope."/>
-        <controls:TextBoxNum x:Name="hbox_KD" Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="0,198,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Grid.Row="1" ToolTip="Enter the damage coefficient value for the planned breakwater."/>
-        
-        <Button x:Name="Calculate" Content="Calculate" Click="Calculate_Click" Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="0,45,40,0" VerticalAlignment="Top" Width="70" Grid.Row="1" IsDefault="True"/>
-        <Label Content="Wavelength" HorizontalAlignment="Left" Margin="23,75,0,0" VerticalAlignment="Top" Height="25" Width="77" FontSize="11" Grid.Row="1"/>
-        <Label Content="Water depth" HorizontalAlignment="Left" Margin="23,105,0,0" VerticalAlignment="Top" Height="25" Width="77" FontSize="11" Grid.Row="1"/>
-        <Label Content="Rock dimension" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Height="25" Width="90" FontSize="11" Grid.Row="1"/>
+        <Controls:TextBoxNum x:Name="hbox_L" Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="0,70,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" TextChanged="hbox_L_TextChanged" Grid.Row="1" ToolTip="Enter the wavelength in metres."/>
+        <Controls:TextBoxNum x:Name="hbox_h" Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="0,110,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Grid.Row="1" ToolTip="Enter the water depth in metres."/>
+        <Controls:TextBoxNum x:Name="hbox_l" Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="0,150,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Grid.Row="1" ToolTip="Enter the average rock dimension to be used."/>
+        <Controls:TextBoxNum x:Name="hbox_alpha" Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="0,190,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Grid.Row="1" ToolTip="Enter the desired barrier slope."/>
+        <Controls:TextBoxNum x:Name="hbox_KD" Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="0,230,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Grid.Row="1" ToolTip="Enter the damage coefficient value for the planned breakwater."/>
+
+        <Button x:Name="Calculate" Content="Calculate" Click="Calculate_Click" Grid.Column="1" HorizontalAlignment="Right" Height="25" Margin="0,30,40,0" VerticalAlignment="Top" Width="70" Grid.Row="1" IsDefault="True"/>
+        <Label Content="Wavelength" HorizontalAlignment="Left" Margin="23,70,0,0" VerticalAlignment="Top" Height="25" Width="77" FontSize="11" Grid.Row="1"/>
+        <Label Content="Water depth" HorizontalAlignment="Left" Margin="23,110,0,0" VerticalAlignment="Top" Height="25" Width="77" FontSize="11" Grid.Row="1"/>
+        <Label Content="Rock dimension" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Height="25" Width="90" FontSize="11" Grid.Row="1"/>
         <Label Content="Variables" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="100" FontWeight="Bold" FontFamily="Tahoma" FontSize="14"/>
         <Label Content="Results" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="100" FontWeight="Bold" FontFamily="Tahoma" Grid.Column="2" Margin="10,0,0,0" FontSize="14"/>
         <Label Content="Your waves are " HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="130" Grid.Column="2" Margin="10,45,0,0" FontSize="11"/>
@@ -115,14 +113,14 @@
         <Label Content="rad/m" Grid.Column="3" HorizontalAlignment="Left" Margin="73,164,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
         <Label Content="waves" Grid.Column="3" HorizontalAlignment="Left" Margin="73,45,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40" RenderTransformOrigin="-0.043,0.533"/>
         <Label Content="Basic Wave Properties" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="130" Grid.Column="2" Margin="10,20,0,0" FontSize="11" FontWeight="Bold"/>
-        <Label Content="Derived Quantities for Breakwater Design" Grid.Row="1" VerticalAlignment="Top" Height="25" Grid.Column="2" Margin="10,189,0,0" FontSize="11" FontWeight="Bold" HorizontalAlignment="Left" Width="270" Grid.ColumnSpan="2"/>
-        <Label Content="m" HorizontalAlignment="Left" Margin="85,76,0,0" VerticalAlignment="Top" Height="25" Width="25" FontSize="10" Grid.Row="1" Grid.Column="1"/>
-        <Label Content="m" HorizontalAlignment="Left" Margin="85,105,0,0" VerticalAlignment="Top" Height="25" Width="25" FontSize="10" Grid.Row="1" Grid.Column="1"/>
-        <Label Content="m" HorizontalAlignment="Left" Margin="85,135,0,0" VerticalAlignment="Top" Height="25" Width="25" FontSize="10" Grid.Row="1" Grid.Column="1"/>
-        <Label Content="Barrier slope" HorizontalAlignment="Left" Margin="23,168,0,0" VerticalAlignment="Top" Height="25" Width="77" FontSize="11" Grid.Row="1"/>
-        <Label Content="Damage coefficient" HorizontalAlignment="Left" Margin="0,198,0,0" VerticalAlignment="Top" Height="25" Width="105" FontSize="11" Grid.Row="1" Grid.ColumnSpan="2"/>
-        <Label Content="deg" HorizontalAlignment="Left" Margin="80,168,0,0" VerticalAlignment="Top" Height="25" Width="30" FontSize="10" Grid.Row="1" Grid.Column="1"/>
-        <Label Content="%" HorizontalAlignment="Left" Margin="85,198,0,0" VerticalAlignment="Top" Height="25" Width="25" FontSize="10" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="Derived Quantities for Breakwater Design" Grid.Row="1" VerticalAlignment="Top" Height="25" Grid.Column="2" Margin="10,189,0,0" FontSize="11" FontWeight="Bold" HorizontalAlignment="Left" Width="270" Grid.ColumnSpan="3"/>
+        <Label Content="m" HorizontalAlignment="Left" Margin="85,70,0,0" VerticalAlignment="Top" Height="25" Width="25" FontSize="10" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="m" HorizontalAlignment="Left" Margin="85,110,0,0" VerticalAlignment="Top" Height="25" Width="25" FontSize="10" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="m" HorizontalAlignment="Left" Margin="85,150,0,0" VerticalAlignment="Top" Height="25" Width="25" FontSize="10" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="Barrier slope" HorizontalAlignment="Left" Margin="23,190,0,0" VerticalAlignment="Top" Height="25" Width="77" FontSize="11" Grid.Row="1"/>
+        <Label Content="Damage coefficient" HorizontalAlignment="Left" Margin="0,230,0,0" VerticalAlignment="Top" Height="25" Width="105" FontSize="11" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <Label Content="deg" HorizontalAlignment="Left" Margin="80,190,0,0" VerticalAlignment="Top" Height="25" Width="30" FontSize="10" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="%" HorizontalAlignment="Left" Margin="85,230,0,0" VerticalAlignment="Top" Height="25" Width="25" FontSize="10" Grid.Row="1" Grid.Column="1"/>
         <Label x:Name="ResultDispR" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="3,134,0,0" FontSize="11"/>
         <Label x:Name="ResultWavek" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="3,164,0,0" FontSize="11"/>
         <Label x:Name="ResultWaveT" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="3,75,0,0" FontSize="11"/>
@@ -132,19 +130,21 @@
         <Label Content="Hudson Force:" Grid.Column="2" HorizontalAlignment="Left" Margin="31,278,0,0" Grid.Row="1" VerticalAlignment="Top" Width="117" Height="25" FontSize="11"/>
         <Label Content="Particle velocity u:" Grid.Column="2" HorizontalAlignment="Left" Margin="31,219,0,0" Grid.Row="1" VerticalAlignment="Top" Width="117" Height="25" FontSize="11"/>
         <Label Content="Design wave height H:" Grid.Column="2" HorizontalAlignment="Left" Margin="31,248,0,0" Grid.Row="1" VerticalAlignment="Top" Width="117" Height="25" FontSize="11"/>
-        <Label Content="m" Grid.Column="3" HorizontalAlignment="Left" Margin="73,248,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
-        <Label Content="N" Grid.Column="3" HorizontalAlignment="Left" Margin="73,277,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
-        <Label Content="m/s" Grid.Column="3" HorizontalAlignment="Left" Margin="73,219,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40" RenderTransformOrigin="-0.043,0.533"/>
+        <Label Content="m" Grid.Column="3" HorizontalAlignment="Left" Margin="73,248,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40" Grid.ColumnSpan="2"/>
+        <Label Content="N" Grid.Column="3" HorizontalAlignment="Left" Margin="73,277,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40" Grid.ColumnSpan="2"/>
+        <Label Content="m/s" Grid.Column="3" HorizontalAlignment="Left" Margin="73,219,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40" RenderTransformOrigin="-0.043,0.533" Grid.ColumnSpan="2"/>
         <Label x:Name="ResultHudsonForce" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="0,277,0,0" FontSize="11"/>
         <Label x:Name="ResultSR" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="0,307,0,0" FontSize="11"/>
         <Label x:Name="Resultu" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="0,218,0,0" FontSize="11"/>
         <Label x:Name="ResultHd" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="0,248,0,0" FontSize="11"/>
-        <Label Content="Weight of rock for design:" Grid.Column="2" HorizontalAlignment="Left" Margin="10,367,0,0" Grid.Row="1" VerticalAlignment="Top" Width="138" Height="25" FontSize="11"/>
-        <Label Content="Stability coefficient Ns:" Grid.Column="2" HorizontalAlignment="Left" Margin="19,337,0,0" Grid.Row="1" VerticalAlignment="Top" Width="129" Height="25" FontSize="11"/>
-        <Label Content="kg" Grid.Column="3" HorizontalAlignment="Left" Margin="73,366,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
-        <Label x:Name="ResultWR" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="0,366,0,0" FontSize="11"/>
-        <Label x:Name="ResultNS" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="0,337,0,0" FontSize="11"/>
-    
+        <Label Content="Weight of rock for design:" Grid.Column="2" HorizontalAlignment="Left" Margin="12,368,0,0" Grid.Row="1" VerticalAlignment="Top" Width="138" Height="25" FontSize="11"/>
+        <Label Content="Stability coefficient Ns:" Grid.Column="2" HorizontalAlignment="Left" Margin="19,338,0,0" Grid.Row="1" VerticalAlignment="Top" Width="129" Height="25" FontSize="11"/>
+        <Label Content="kg" Grid.Column="3" HorizontalAlignment="Left" Margin="73,368,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40" Grid.ColumnSpan="2"/>
+        <Label x:Name="ResultNS" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" FontSize="11" Margin="0,338,0,0"/>
+        <Label x:Name="ResultWR" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="70" FontFamily="Tahoma" Grid.Column="3" Margin="0,368,0,0" FontSize="11"/>
+        <Label Content="tons" Grid.Column="4" HorizontalAlignment="Left" Margin="57,368,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="11" Height="25" Width="40"/>
+        <Label x:Name="ResulttWR" Content="" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="55" FontFamily="Tahoma" Grid.Column="4" Margin="2,368,0,0" FontSize="11"/>
+
     </Grid>
-    
+
 </r:RibbonWindow>

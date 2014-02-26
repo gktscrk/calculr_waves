@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 
 using Microsoft.Windows.Controls.Ribbon;
 
-using WaveCalculator.Lib;
+using WaveCalculator.Variables;
 using WaveCalculator.Controls;
 
 
@@ -30,12 +30,12 @@ namespace calculator_wht
 
     public partial class HudsonWindow : RibbonWindow
     {
-        WaveCalculator.Lib.HudsonCalculator Hudsoncalculator;
+        WaveCalculator.Variables.HudsonCalculator Hudsoncalculator;
 
         public HudsonWindow()
         {
             InitializeComponent();
-            Hudsoncalculator = new WaveCalculator.Lib.HudsonCalculator();
+            Hudsoncalculator = new WaveCalculator.Variables.HudsonCalculator();
         }
 
         private void hbox_L_TextChanged(object sender, TextChangedEventArgs e)
@@ -47,11 +47,9 @@ namespace calculator_wht
         {
             var lambda = double.Parse(hbox_L.Text);
             var h = double.Parse(hbox_h.Text);
+            var l = double.Parse(hbox_l.Text);
             var alpha = double.Parse(hbox_alpha.Text);
             var KD = double.Parse(hbox_KD.Text);
-            var l = double.Parse(hbox_l.Text);
-
-            alpha = (Math.PI / 180) * alpha;
 
             var result = Hudsoncalculator.Calculate(lambda, l, h, KD, alpha);
 
@@ -60,12 +58,14 @@ namespace calculator_wht
             ResultWavef.Content = Math.Round(result.f, 2);
             ResultDispR.Content = Math.Round(result.omega, 3);
             ResultWavek.Content = Math.Round(result.k, 3);
+            Resultu.Content = Math.Round(result.u, 2);
 
             ResultHudsonForce.Content = Math.Round(result.HudsonForce, 2);
             ResultHd.Content = Math.Round(result.Hd, 2);
             ResultNS.Content = Math.Round(result.NS, 2);
             ResultSR.Content = Math.Round(result.SR, 2);
-            ResultWR.Content = Math.Round(result.WR, 2);
+            ResultWR.Content = Math.Round(result.WR, 0);
+            ResulttWR.Content = Math.Round(result.WR/1000, 2);
 
         }
 
@@ -116,7 +116,13 @@ namespace calculator_wht
             secondWindow.Show();
             
         }
- 
+
+        private void RibbonButton_Click_2(object sender, RoutedEventArgs e)
+        {
+            FlowPatternWindow secondWindow = new FlowPatternWindow();
+            secondWindow.Show();
+        }
+
     }
     
 

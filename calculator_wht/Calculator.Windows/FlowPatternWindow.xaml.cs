@@ -21,119 +21,113 @@ using WaveCalculator.Variables;
 using WaveCalculator.Controls;
 
 
-
 namespace calculator_wht
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for FlowStateWindow.xaml
     /// </summary>
-    
-    public class Person : INotifyPropertyChanged
+    public partial class FlowPatternWindow : RibbonWindow
     {
-        private string name;
-        // Declare the event
-        public event PropertyChangedEventHandler PropertyChanged;
+        WaveCalculator.Variables.FlowPatternCalculator FlowPatternCalculator;
 
-        public Person()
-        {
-        }
-
-        public string Name
-        {
-            get { return name; }
-            set
-            {
-                name = value;
-                //Call OnPropertyChanged whenever the property is updated
-                OnPropertyChanged("Name");
-            }
-        }
-
-        protected void OnPropertyChanged(string name)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(name));
-            }
-        }
-    }
-
-    public partial class MainWindow : RibbonWindow
-    {
-        WaveCalculator.Variables.WavePropertyCalculator calculator;
-
-        public MainWindow()
+        public FlowPatternWindow()
         {
             InitializeComponent();
-            calculator = new WaveCalculator.Variables.WavePropertyCalculator();
+            FlowPatternCalculator = new WaveCalculator.Variables.FlowPatternCalculator();
         }
 
-        private void OnIgnore(object sender, ExecutedRoutedEventArgs e)
-        {
-            // do nothing
-        }
-        
         private void box_L_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
 
-        private void Calculate_Click(object sender, RoutedEventArgs e)
+        private void Calculate1_Click(object sender, RoutedEventArgs e)
         {
-            var h = double.Parse(box_h.Text);
-            var H = double.Parse(box_H.Text);
             var lambda = double.Parse(box_L.Text);
+            var h = double.Parse(box_h.Text);
+            var d = double.Parse(box_d.Text);
 
-            var result = calculator.Calculate(lambda, H, h);
-            
+
+            var result = FlowPatternCalculator.Calculate1(lambda, h, d);
+
             Result.Content = result.state;
             ResultWaveT.Content = Math.Round(result.T, 2);
             ResultWavef.Content = Math.Round(result.f, 2);
             ResultDispR.Content = Math.Round(result.omega, 3);
             ResultWavek.Content = Math.Round(result.k, 3);
 
-            Resultu.Content = Math.Round(result.u, 2);
-            ResultHs.Content = Math.Round(result.Hs, 2);
-            Resultc.Content = Math.Round(result.c, 2);
-            Resultcg.Content = Math.Round(result.cg, 2);
-            ResultE.Content = Math.Round(result.E, 2);
-            ResultP.Content = Math.Round(result.P, 2);
+            ResultFroudeN.Content = Math.Round(result.FroudeN, 2);
 
-            ResultkP.Content = "= " + Math.Round(result.P/1000, 3);
         }
-        
+
+        private void Calculate2_Click(object sender, RoutedEventArgs e)
+        {
+            var lambda = double.Parse(box_L.Text);
+            var h = double.Parse(box_h.Text);
+            var d = double.Parse(box_d.Text);
+            var H = double.Parse(box_H.Text);
+
+            var result = FlowPatternCalculator.Calculate2(lambda, h, d,  H);
+
+            Result.Content = result.state;
+            ResultWaveT.Content = Math.Round(result.T, 2);
+            ResultWavef.Content = Math.Round(result.f, 2);
+            ResultDispR.Content = Math.Round(result.omega, 3);
+            ResultWavek.Content = Math.Round(result.k, 3);
+
+            ResultKeuleganN.Content = Math.Round(result.KeuleganN, 2);
+
+        }
+
+        private void Calculate3_Click(object sender, RoutedEventArgs e)
+        {
+            var lambda = double.Parse(box_L.Text);
+            var h = double.Parse(box_h.Text);
+            var d = double.Parse(box_d.Text);
+            var H = double.Parse(box_H.Text);
+
+            var result = FlowPatternCalculator.Calculate3(lambda, h, d, H);
+
+            Result.Content = result.state;
+            ResultWaveT.Content = Math.Round(result.T, 2);
+            ResultWavef.Content = Math.Round(result.f, 2);
+            ResultDispR.Content = Math.Round(result.omega, 3);
+            ResultWavek.Content = Math.Round(result.k, 3);
+
+            ResultReynoldsN.Content = Math.Round(result.ReynoldsN, 2);
+
+        }
+
         private void Open_MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void SaveProject_MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
-        
+
         private void Settings_MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void Help_MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
-        
+
         private void About_MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void UnloadAllFiles_MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
-        
+
         private void Exit_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -149,14 +143,8 @@ namespace calculator_wht
         {
             MainWindow secondWindow = new MainWindow();
             secondWindow.Show();
-        }
 
-        private void RibbonButton_Click_2(object sender, RoutedEventArgs e)
-        {
-            FlowPatternWindow secondWindow = new FlowPatternWindow();
-            secondWindow.Show();
         }
 
     }
-
 }

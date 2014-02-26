@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using MathNet.Numerics;
 
 
-namespace WaveCalculator.Lib
+namespace WaveCalculator.Variables
 {
     public class HudsonCalculator
     {
@@ -19,10 +19,14 @@ namespace WaveCalculator.Lib
             double beta, HudsonForce, NS, Const, gammaR, Hd, WR, SR;
             double RhoRock, RhoWater, g;
 
+            // alpha = (Math.PI / 180) * alpha;
+            KD = KD / 100;
+
             g = 9.807;
             RhoWater = 1000;
             RhoRock = 2500;
             beta = 0.78;
+
             Const = 1;
 
             k = 2 * Math.PI / lambda;
@@ -40,7 +44,7 @@ namespace WaveCalculator.Lib
             gammaR = RhoRock * g;
             SR = RhoRock / RhoWater;
 
-            WR = (Math.Pow(Hd, 3) * gammaR) / (Math.Pow((SR - 1), 3)) * KD * MathNet.Numerics.Trig.Cotangent(alpha);
+            WR = (Math.Pow(Hd, 3) * gammaR) / (Math.Pow((SR - 1), 3) * KD * MathNet.Numerics.Trig.Cotangent(alpha));
 
             // Base properties of waves
             result.state = getState(kh);
@@ -50,6 +54,7 @@ namespace WaveCalculator.Lib
             result.k = k;
 
             // Derived values
+            result.u = u;
             result.HudsonForce = HudsonForce;
             result.Hd = Hd;
             result.SR = SR;

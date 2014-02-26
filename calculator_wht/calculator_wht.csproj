@@ -39,6 +39,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -86,9 +87,6 @@
     </Reference>
     <Reference Include="UIAutomationProvider" />
     <Reference Include="UIAutomationTypes" />
-    <Reference Include="WaveCalculator.Lib">
-      <HintPath>WaveCalculator.Lib\bin\Debug\WaveCalculator.Lib.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -98,11 +96,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="HudsonWindow.xaml.cs">
+    <Compile Include="Calculator.Windows\FlowPatternWindow.xaml.cs">
+      <DependentUpon>FlowPatternWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calculator\FlowPatternCalculator.cs" />
+    <Compile Include="Calculator\HudsonCalculator.cs" />
+    <Compile Include="Calculator.Windows\HudsonWindow.xaml.cs">
       <DependentUpon>HudsonWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\TextBoxNum.cs" />
-    <Page Include="HudsonWindow.xaml">
+    <Compile Include="Calculator\WaveCalculator.cs" />
+    <Compile Include="Variables\GeneralState.cs" />
+    <Compile Include="Variables\WaveState.cs" />
+    <Page Include="Calculator.Windows\FlowPatternWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Calculator.Windows\HudsonWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -164,6 +174,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

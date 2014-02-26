@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace WaveCalculator.Lib
+namespace WaveCalculator.Variables
 {
-    public class WaveCalculator
+    public class WavePropertyCalculator
     {
         public WaveState Calculate(double lambda, double H, double h)
         {
